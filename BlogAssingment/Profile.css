@@ -1,0 +1,39 @@
+﻿body {
+}
+
+#upload-button {
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    position: relative;
+    right: -50em;
+}
+
+.profile-pic {
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+    position: relative;
+    right: -50em;
+}
+
+.file-upload {
+    display: none;
+}
+
+.pattern {
+    font-weight: bold;
+    text-align: left;
+}
+
+.tbl {
+    border: 2px solid skyblue;
+    display: block;
+    text-align: left;
+}
+
+.edit {
+    text-decoration: none;
+}
+
