@@ -121,7 +121,6 @@ namespace BlogAssingment
             return userList;
         }
 
-
         [WebMethod]
         public static string GetProfileData(string userid)
         {
@@ -188,7 +187,6 @@ namespace BlogAssingment
             return serializer.Serialize(profileList.ToList());
         }
 
-
         [WebMethod]
         public static Boolean UpdateProfileData(string name, string country, string zipcode, string city, string phoneNo, string email, string image, string password, string userid)
         {
@@ -227,7 +225,6 @@ namespace BlogAssingment
             return rowsAffected == 1;
 
         }
-
 
         [WebMethod]
         public static int InsertPostContent(string title, string content, string userid)
@@ -342,7 +339,6 @@ namespace BlogAssingment
             return rowsAffected;
         }
 
-
         [WebMethod]
         public static int InsertCommentContent(string comment, string postid)
         {
@@ -426,5 +422,31 @@ namespace BlogAssingment
             return commentList;
         }
 
+        [WebMethod]
+        public static bool SignIn(string username, string password)
+        {
+            if (CheckUserExist(username, password).Count > 0)
+            {
+                string data = "{ ";
+                data += "\"username\" : ";
+                data += "\"" + username + "\"";
+                data += ", ";
+                data += "\"password\" : ";
+                data += "\"" + password + "\"";
+                data += " }";
+
+                HttpContext.Current.Response.SetCookie(new HttpCookie("user", data));
+
+                return true;
+            }
+
+            return false;
+        }
+
+        [WebMethod]
+        public static bool SignOut(string username)
+        {
+            return false;
+        }
     }
 }

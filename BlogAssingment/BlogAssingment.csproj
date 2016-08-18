@@ -57,6 +57,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\BlogDBTemp.mdf" />
+    <Content Include="App_Data\BlogDBTemp_log.ldf">
+      <DependentUpon>BlogDBTemp.mdf</DependentUpon>
+    </Content>
     <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff" />
@@ -69,10 +73,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\BlogDB.mdf" />
-    <Content Include="App_Data\BlogDB_log.ldf">
-      <DependentUpon>BlogDB.mdf</DependentUpon>
-    </Content>
     <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.min.css" />
     <Content Include="bootstrap-3.3.7-dist\css\bootstrap.min.css" />
     <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.svg" />
@@ -81,6 +81,7 @@
     <Content Include="bootstrap-3.3.7-dist\js\npm.js" />
     <Content Include="Cookie.js" />
     <Content Include="css\w3.css" />
+    <Content Include="general.js" />
     <Content Include="GetData.aspx" />
     <Content Include="Global.asax" />
     <Content Include="home.css" />

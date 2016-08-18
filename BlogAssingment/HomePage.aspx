@@ -203,7 +203,6 @@
                 var pws1 = $("#pw1").val();
                 var pws2 = $("#pw2").val();
                 
-                
                 var obj = new Object();
                 obj.name = name;
                 obj.gender = gender;
@@ -251,7 +250,7 @@
 
         $("#myform3").ready(function () {
             
-            CheckCookie();
+            //CheckCookie();
             $("#btn-login").click(function () {
                 var username = $("#usrname").val();
                 var password = $("#psw").val();
@@ -266,35 +265,42 @@
                     alert("Validating");
                     $.ajax({
                         type: "POST",
-                        url: "GetData.aspx/CheckUserExist",
+                        url: "GetData.aspx/SignIn",
                         data: jsonText,
                         contentType: "application/json; charset=utf-8",
                         datatype: "json",
                         async: false,
                         success: function (response) {
-                            var isExist = 0;
-                            for (var i = 0; i <= response.d.length - 1; i++) {
-                                isExist = 1;
-                                var expDate = new Date();
-
-                                expDate.setMinutes(expDate.getMinutes() + 5);
-                                alert("Creating Cookie");
-                                var user = new Object();
-                                user.userid = response.d[i].UserId;
-                                user.username = response.d[i].Username;
-                                user.password = response.d[i].Password;
-
-                                var jsonText = JSON.stringify(user);
-
-                                document.cookie = "user=" + jsonText + "; expires=" + expDate.toGMTString();
-
-                                window.location.href = "MainPage.aspx";
+                            if(response.d == true)
+                            {
+                                alert("Validation succeed.");
                             }
-
-                            if (isExist == 0) {
-                                alert("Invalid User");
-
+                            else {
+                                alert("Validation failed.");
                             }
+                            //var isExist = 0;
+                            //for (var i = 0; i <= response.d.length - 1; i++) {
+                            //    isExist = 1;
+                            //    //var expDate = new Date();
+
+                            //    //expDate.setMinutes(expDate.getMinutes() + 5);
+                            //    alert("Creating Cookie");
+                            //    var user = new Object();
+                            //    user.userid = response.d[i].UserId;
+                            //    user.username = response.d[i].Username;
+                            //    user.password = response.d[i].Password;
+
+                            //    var jsonText = JSON.stringify(user);
+
+                            //    document.cookie = "user=" + jsonText + "; expires=" + expDate.toGMTString();
+
+                            //    window.location.href = "MainPage.aspx";
+                            //}
+
+                            //if (isExist == 0) {
+                            //    alert("Invalid User");
+
+                            //}
                         },
                         error: function (response) {
                             alert(response.status + ' ' + response.statusText);
@@ -304,17 +310,16 @@
                 }
             });
         });
+
         function CheckCookie() {
 
             var theUser = getCookie("user");
             
-
             if (theUser != null) {
                 window.location.href = "MainPage.aspx";
             }
 
         }
-
 
     });
 

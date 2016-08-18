@@ -13,4 +13,25 @@
     return null;
 }
 
+function verifyUserCookie() {
+    var userCookie = getCookie("user");
+    var verified = false;
 
+    if (userCookie == null) return;
+
+    $.ajax({
+        type: "POST",
+        url: "GetData.aspx/SignIn",
+        data: JSON.stringify(userCookie),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        async: false,
+        success: function (response) {
+            verified = response.d;
+        },
+        error: function (response) {
+        }
+    });
+
+    return verified;
+}
