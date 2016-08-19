@@ -14,6 +14,7 @@
     <script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
     <script src="jquery-1.11.3.min.js"></script>
     <script src="Cookie.js" type="text/javascript"></script>
+    <script src="general.js"></script>
     <style>
         body, h1, h2, h3, h4, h5 {
             font-family: "Raleway", sans-serif;
@@ -91,7 +92,7 @@
                 <li class="w3-hide-small"><a href="#" class="w3-padding-large w3-hover-white" id="dropmenu">User</a></li>
                 <div class="dropdown-content">
                     <a href="#" class="postanalysis">Post Analysis</a>
-                    <a href="#" class="signout">Sign Out</a>
+                    <a href="Profile.aspx" class="signout" onclick="signOut()">Sign Out</a>
                 </div>
             </div>
             <li class="w3-hide-small" style="float: right"><a href="#" class="post w3-padding-large w3-btn w3-black w3-hover-white">New Post</a></li>
@@ -292,23 +293,7 @@
                 return true;
         }
 
-        function CheckCookie() {
-
-            var theUser = getCookie("user");
-
-
-            if (theUser != null) {
-                var obj = JSON.parse(theUser);
-
-                $("#userID").val(obj.userid);
-                alert("userId" + $("#userID").val(obj.userid));
-                $("#userName").val(obj.username);
-            }
-
-        }
-
         $(document).ready(function () {
-            CheckCookie();
 
             $('.error').hide();
             $("#profpic").hide();
@@ -336,9 +321,7 @@
             $('.postanalysis').on('click', function () {
                 window.location.href = "post-analysis.html";
             });
-            $('.signout').on('click', function () {
-                window.location.href = "start-page.html";
-            });
+
             $('.post').on('click', function () {
                 window.location.href = "new-post.aspx";
             });
@@ -354,9 +337,7 @@
                 var obj = new Object;
                 obj.userid = userId;
                 var jsonText = JSON.stringify(obj);
-               
-                alert(userId);
-                alert("Loaded");
+
                 $.ajax({
                     type: "POST",
                     data: jsonText,
@@ -398,7 +379,6 @@
                 });
 
                 $("#save").click(function () {
-                    alert("updating");
                     var name = $("#Name").val();
 
                     var password = $("#pw2").val();

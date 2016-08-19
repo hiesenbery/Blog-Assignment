@@ -12,9 +12,8 @@ namespace BlogAssingment
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie cookie = Request.Cookies["user"];
-            if (cookie == null) return;
 
-            if (GetData.ValidateCookie(cookie))
+            if (!GetData.ValidateCookie(cookie) || cookie == null)
             {
                 try
                 {
