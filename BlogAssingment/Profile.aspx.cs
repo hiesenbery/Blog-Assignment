@@ -11,7 +11,20 @@ namespace BlogAssingment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            HttpCookie cookie = Request.Cookies["user"];
+            if (cookie == null) return;
 
+            if (GetData.ValidateCookie(cookie))
+            {
+                try
+                {
+                    Response.Redirect("MainPage.aspx");
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                }
+            }
         }
     }
 }
