@@ -444,9 +444,31 @@ namespace BlogAssingment
         }
 
         [WebMethod]
-        public static bool SignOut(string username)
+        public static bool SignOut()
         {
-            return false;
+            HttpContext.Current.Response.Cookies.Set(new HttpCookie("user", "{ \"username\": \"a\", \"password\": \"a\" }; expires=Thu, 01 Jan 1970 00:00:01 GMT;"));
+
+            return true;
+        }
+
+        public static bool ValidateCookie(HttpCookie cookie)
+        {
+            string username = "";
+            string password = "";
+
+            try
+            {
+                string[] objValues = cookie.Value.Replace(" ", "").Replace("{", "").Replace("}", "").Replace("\"", "").Split(':', ','); // { "username" : "username", "password" : "password" }
+
+                username = objValues[1];
+                password = objValues[3];
+            }
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+            }
+
+            return GetData.SignIn(username, password);
         }
     }
 }

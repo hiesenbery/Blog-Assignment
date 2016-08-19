@@ -5,12 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>BLOGGY</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="css/w3.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"/>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+    <script src="general.js"></script>
     <style>
         body, h1, h2, h3, h4, h5 {
             font-family: "Raleway", sans-serif;
@@ -20,22 +21,22 @@
             background-image: url('img/blog-bg.jpg');
         }
 
-            body #profpic {
+        body #profpic {
                 display: block;
                 height: 220px;
                 width: 220px;
                 margin: auto;
                 margin-top: 20px;
                 border-radius: 50%;
-            }
+        }
 
         footer {
             background-image: url('img/white.jpg');
         }
 
-            footer .icon {
+        footer .icon {
                 float: right;
-            }
+        }
 
         .dropdown {
             position: fixed;
@@ -50,16 +51,16 @@
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         }
 
-            .dropdown-content a {
+        .dropdown-content a {
                 color: black;
                 padding: 12px 16px;
                 text-decoration: none;
                 display: block;
-            }
+        }
 
-                .dropdown-content a:hover {
+        .dropdown-content a:hover {
                     background-color: #f1f1f1;
-                }
+        }
 
         .dropdown:hover .dropdown-content {
             display: block;
@@ -83,10 +84,10 @@
                 <div class="dropdown-content">
                     <a href="#" class="editprofile">Edit Profile</a>
                     <a href="#" class="postanalysis">Post Analysis</a>
-                    <a href="#" class="signout">Sign Out</a>
+                    <a href="MainPage.aspx" class="signout">Sign Out</a>
                 </div>
             </div>
-            <li class="w3-hide-small" style="float: right"><a href="#" class="post w3-padding-large w3-btn w3-black w3-hover-white">New Post</a></li>
+            <li class="w3-hide-small" style="float: right"><a href="new-post.aspx" class="post w3-padding-large w3-btn w3-black w3-hover-white">New Post</a></li>
         </ul>
     </div>
 
@@ -254,12 +255,8 @@
                 window.location.href = "post-analysis.html";
             });
             $('.signout').on('click', function () {
-                window.location.href = "HomePage.aspx";
+                signOut();
             });
-            $('.post').on('click', function () {
-                window.location.href = "new-post.aspx";
-            });
-
         });
     </script>
 </body>

@@ -13,6 +13,7 @@
     <script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
     <script type="text/javascript" src="js/tinymce.min.js"></script>
     <script type="text/javascript" src="Cookie.js"></script>
+    <script type="text/javascript" src="general.js"></script>
     <style>
         body, h1, h2, h3, h4, h5 {
             font-family: "Raleway", sans-serif;
@@ -86,7 +87,7 @@
                 <div class="dropdown-content">
                     <a href="#" class="editprofile">Edit Profile</a>
                     <a href="#" class="postanalysis">Post Analysis</a>
-                    <a href="#" class="signout">Sign Out</a>
+                    <a href="new-post.aspx" onclick="signOut()" class="signout">Sign Out</a>
                 </div>
             </div>
             <li class="w3-hide-small" style="float: right"><a href="#" class="post w3-padding-large w3-btn w3-black w3-hover-white">New Post</a></li>
@@ -159,23 +160,8 @@
             }
         }
 
-        function CheckCookie() {
-
-            var theUser = getCookie("user");
-
-
-            if (theUser != null) {
-                var obj = JSON.parse(theUser);
-
-                $("#UserID").val(obj.userid);
-                
-            }
-
-        }
         $(document).ready(function () {
             
-            CheckCookie();
-            alert("userid:" + $("#UserID").val());
             $('#contenterror').hide();
             $('#titleerror').hide();
             $('.editprofile').on('click', function () {
@@ -184,9 +170,7 @@
             $('.postanalysis').on('click', function () {
                 window.location.href = "post-analysis";
             });
-            $('.signout').on('click', function () {
-                window.location.href = "start-page.html";
-            });
+
             $('.post').on('click', function () {
                 window.location.href = "new-post.aspx";
             });

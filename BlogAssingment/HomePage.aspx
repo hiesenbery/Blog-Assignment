@@ -162,7 +162,7 @@
  <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
 
-        <input type="hidden" id="userID" value="1" />
+<input type="hidden" id="userID" value="1" />
 <script type="text/javascript">
     // Used to toggle the menu on small screens when clicking on the menu button
     function smallScreen() {
@@ -250,7 +250,6 @@
 
         $("#myform3").ready(function () {
             
-            //CheckCookie();
             $("#btn-login").click(function () {
                 var username = $("#usrname").val();
                 var password = $("#psw").val();
@@ -310,20 +309,7 @@
                 }
             });
         });
-
-        function CheckCookie() {
-
-            var theUser = getCookie("user");
-            
-            if (theUser != null) {
-                window.location.href = "MainPage.aspx";
-            }
-
-        }
-
     });
-
-    
 
 </script>
 

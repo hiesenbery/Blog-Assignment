@@ -13,17 +13,9 @@ namespace BlogAssingment
         protected void Page_Load(object sender, EventArgs e)
         {
             HttpCookie cookie = Request.Cookies["user"];
-            if (cookie == null)
-            {
-                return;
-            }
+            if (cookie == null) return;
 
-            string[] objValues = cookie.Value.Replace(" ", "").Replace("{", "").Replace("}", "").Replace("\"", "").Split(':', ','); // { "username" : "username", "password" : "password" }
-            
-            string username = objValues[1];
-            string password = objValues[3];
-
-            if(GetData.SignIn(username, password))
+            if(GetData.ValidateCookie(cookie))
             {
                 try
                 {
@@ -33,10 +25,6 @@ namespace BlogAssingment
                 {
                     ex.Message.ToString();
                 }
-            }
-            else
-            {
-
             }
         }
     }
